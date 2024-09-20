@@ -1,0 +1,18 @@
+services:
+# Servicio para PostgreSQL
+  postgres:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: postgres:16.3-alpine
+    container_name: servidor_postgresql2
+    restart: no # Para que no se relance al reiniciar (sino: 'always')
+    environment:
+      POSTGRES_DB: TP1-BD
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin123
+    ports:
+      - "5440:5432"
+    volumes:
+      - /Users/Colegio/Documents/3er Año/2do Semestre/Base Datos/TP1/data:/var/lib/postgresql/data
+      - /Users/Colegio/Documents/3er Año/2do Semestre/Base Datos/TP1/archivos_csv:/tmp/archivos_csv
